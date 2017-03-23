@@ -1,13 +1,3 @@
-"""
- Show how to put a timeer on the screen.
- 
- Sample Python/Pygame Programs
- Simpson College Computer Science
- http://programarcadegames.com/
- http://simpson.edu/computer-science/
- 
-"""
- 
 import pygame
 
 # Define Variables
@@ -35,7 +25,7 @@ pygame.init()
 size = [700, 500]
 screen = pygame.display.set_mode(size)
  
-pygame.display.set_caption("My Game")
+pygame.display.set_caption("Brew Day")
  
 # Loop until the user clicks the close button.
 done = False
@@ -75,7 +65,7 @@ while not done:
  
     # Blit to the screen
     text = font.render(output_string, True, BLACK)
-    screen.blit(text, [250, 20]) 
+    screen.blit(text, [25, 200]) 
  
     # --- Timer going down ---
     # --- Brew Time Left ---
@@ -96,27 +86,50 @@ while not done:
     # Blit to the screen
     text = font.render(output_string, True, BLACK)
  
-    screen.blit(text, [250, 230])
+    screen.blit(text, [25, 230])
   
-  # --- Time until first addition ---
+  
+
+  
+    # --- Addition until hop 1 ---
     # Calculate total seconds
-    seconds_to_addition1 = addition1 - (frame_count // frame_rate)
-    if seconds_to_addition1 < 0:
-        seconds_to_addition1 = 0
+    total_seconds = brewLength - addition1 - (frame_count // frame_rate)
+    if total_seconds < 0:
+        total_seconds = 0
  
     # Divide by 60 to get total minutes
-    minutes = seconds_to_addition1 // 60
+    minutes = total_seconds // 60
  
     # Use modulus (remainder) to get seconds
-    seconds = seconds_to_addition1 % 60
+    seconds = total_seconds % 60
  
-    # Use python string formatting to format in leading zeros
+   # Use python string formatting to format in leading zeros
     output_string = "Time until " + hop1 + ": {0:02}:{1:02}".format(minutes, seconds)
  
     # Blit to the screen
     text = font.render(output_string, True, BLACK)
  
-    screen.blit(text, [250, 260])
+    screen.blit(text, [25, 260])
+  
+    # --- Addition until hop 2 ---
+    # Calculate total seconds
+    total_seconds = brewLength - addition2 - (frame_count // frame_rate)
+    if total_seconds < 0:
+        total_seconds = 0
+ 
+    # Divide by 60 to get total minutes
+    minutes = total_seconds // 60
+ 
+    # Use modulus (remainder) to get seconds
+    seconds = total_seconds % 60
+ 
+   # Use python string formatting to format in leading zeros
+    output_string = "Time until " + hop2 + ": {0:02}:{1:02}".format(minutes, seconds)
+ 
+    # Blit to the screen
+    text = font.render(output_string, True, BLACK)
+ 
+    screen.blit(text, [25, 290])
  
     # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
     frame_count += 1

@@ -50,7 +50,7 @@ while not done:
  
     # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
  
-    # --- Timer going up ---
+    # --- Timer counting up ---
     # Calculate total seconds
     total_seconds = frame_count // frame_rate
  
@@ -65,9 +65,9 @@ while not done:
  
     # Blit to the screen
     text = font.render(output_string, True, BLACK)
-    screen.blit(text, [25, 200]) 
+    screen.blit(text, [25, 30]) 
  
-    # --- Timer going down ---
+
     # --- Brew Time Left ---
     # Calculate total seconds
     total_seconds = brewLength - (frame_count // frame_rate)
@@ -86,7 +86,7 @@ while not done:
     # Blit to the screen
     text = font.render(output_string, True, BLACK)
  
-    screen.blit(text, [25, 230])
+    screen.blit(text, [25, 60])
   
   
 
@@ -109,7 +109,7 @@ while not done:
     # Blit to the screen
     text = font.render(output_string, True, BLACK)
  
-    screen.blit(text, [25, 260])
+    screen.blit(text, [25, 90])
   
     # --- Addition until hop 2 ---
     # Calculate total seconds
@@ -129,7 +129,68 @@ while not done:
     # Blit to the screen
     text = font.render(output_string, True, BLACK)
  
-    screen.blit(text, [25, 290])
+    screen.blit(text, [25, 120])
+ 
+    # --- Addition until hop 3 ---
+    # Calculate total seconds
+    total_seconds = brewLength - addition3 - (frame_count // frame_rate)
+    if total_seconds < 0:
+        total_seconds = 0
+ 
+    # Divide by 60 to get total minutes
+    minutes = total_seconds // 60
+ 
+    # Use modulus (remainder) to get seconds
+    seconds = total_seconds % 60
+ 
+   # Use python string formatting to format in leading zeros
+    output_string = "Time until " + hop3 + ": {0:02}:{1:02}".format(minutes, seconds)
+ 
+    # Blit to the screen
+    text = font.render(output_string, True, BLACK)
+ 
+    screen.blit(text, [25, 150])
+ 
+ # --- Addition until hop 4 ---
+    # Calculate total seconds
+    total_seconds = brewLength - addition4 - (frame_count // frame_rate)
+    if total_seconds < 0:
+        total_seconds = 0
+ 
+    # Divide by 60 to get total minutes
+    minutes = total_seconds // 60
+ 
+    # Use modulus (remainder) to get seconds
+    seconds = total_seconds % 60
+ 
+   # Use python string formatting to format in leading zeros
+    output_string = "Time until " + hop2 + ": {0:02}:{1:02}".format(minutes, seconds)
+ 
+    # Blit to the screen
+    text = font.render(output_string, True, BLACK)
+ 
+    screen.blit(text, [25, 180])
+ 
+ # --- Addition until hop 5 ---
+    # Calculate total seconds
+    total_seconds = brewLength - addition5 - (frame_count // frame_rate)
+    if total_seconds < 0:
+        total_seconds = 0
+ 
+    # Divide by 60 to get total minutes
+    minutes = total_seconds // 60
+ 
+    # Use modulus (remainder) to get seconds
+    seconds = total_seconds % 60
+ 
+   # Use python string formatting to format in leading zeros
+    output_string = "Time until " + hop3 + ": {0:02}:{1:02}".format(minutes, seconds)
+ 
+    # Blit to the screen
+    text = font.render(output_string, True, BLACK)
+ 
+    screen.blit(text, [25, 210])
+ 
  
     # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
     frame_count += 1

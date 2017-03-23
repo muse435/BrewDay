@@ -8,7 +8,7 @@ hop3 = "Simcoe"
 
 pretimer = 1
 brewLength = 3600
-addition1 = 3600
+addition1 = 3530
 addition2 = 1800
 addition3 = 1800
 addition4 = 600

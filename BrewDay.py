@@ -39,6 +39,41 @@ font = pygame.font.Font(None, 25)
 frame_count = 0
 frame_rate = 60
 
+def BrewClock():
+    total_seconds = frame_count // frame_rate
+ 
+    # Divide by 60 to get total minutes
+    minutes = total_seconds // 60
+ 
+    # Use modulus (remainder) to get seconds
+    seconds = total_seconds % 60
+ 
+    # Use python string formatting to format in leading zeros
+    output_string = "Time: {0:02}:{1:02}".format(minutes, seconds)
+ 
+    # Blit to the screen
+    text = font.render(output_string, True, BLACK)
+    screen.blit(text, [25, 30]) 
+    
+def CountDown():
+    total_seconds = brewLength - (frame_count // frame_rate)
+    if total_seconds < 0:
+        total_seconds = 0
+ 
+    # Divide by 60 to get total minutes
+    minutes = total_seconds // 60
+ 
+    # Use modulus (remainder) to get seconds
+    seconds = total_seconds % 60
+ 
+    # Use python string formatting to format in leading zeros
+    output_string = "Brew Time left: {0:02}:{1:02}".format(minutes, seconds)
+ 
+    # Blit to the screen
+    text = font.render(output_string, True, BLACK)
+ 
+    screen.blit(text, [25, 60])
+  
 def TimeUntilAddition(hop, hopTime, addition):
     font_color = BLACK
     total_seconds = brewLength - hopTime - (frame_count // frame_rate)
@@ -71,55 +106,15 @@ while not done:
     screen.fill(WHITE)
  
     # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
- 
-    # --- Timer counting up ---
-    # Calculate total seconds
-    total_seconds = frame_count // frame_rate
- 
-    # Divide by 60 to get total minutes
-    minutes = total_seconds // 60
- 
-    # Use modulus (remainder) to get seconds
-    seconds = total_seconds % 60
- 
-    # Use python string formatting to format in leading zeros
-    output_string = "Time: {0:02}:{1:02}".format(minutes, seconds)
- 
-    # Blit to the screen
-    text = font.render(output_string, True, BLACK)
-    screen.blit(text, [25, 30]) 
- 
-
-    # --- Brew Time Left ---
-    # Calculate total seconds
-    total_seconds = brewLength - (frame_count // frame_rate)
-    if total_seconds < 0:
-        total_seconds = 0
- 
-    # Divide by 60 to get total minutes
-    minutes = total_seconds // 60
- 
-    # Use modulus (remainder) to get seconds
-    seconds = total_seconds % 60
- 
-    # Use python string formatting to format in leading zeros
-    output_string = "Brew Time left: {0:02}:{1:02}".format(minutes, seconds)
- 
-    # Blit to the screen
-    text = font.render(output_string, True, BLACK)
- 
-    screen.blit(text, [25, 60])
-  
-  
+    BrewClock() 
+    CountDown()
     TimeUntilAddition(hop1, addition1, 1)
     TimeUntilAddition(hop2, addition2, 2)
     TimeUntilAddition(hop3, addition3, 3)
     TimeUntilAddition(hop2, addition4, 4)
     TimeUntilAddition(hop3, addition5, 5)
-
-
- 
     # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
+
     frame_count += 1
  
     # Limit frames per second

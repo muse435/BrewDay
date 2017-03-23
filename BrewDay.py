@@ -93,6 +93,9 @@ def TimeUntilAddition(hop, hopTime, addition):
  
     # Blit to the screen
     text = font.render(output_string, True, font_color)
+    if total_seconds == 15:
+       pygame.mixer.Sound('audio/Course.mp3')
+
  
     screen.blit(text, [25, addition*30+60])
   

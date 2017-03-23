@@ -100,15 +100,15 @@ while not done:
   
   # --- Time until first addition ---
     # Calculate total seconds
-    total_seconds = addition1 - (frame_count // frame_rate)
-    if total_seconds < 0:
-        total_seconds = 0
+    seconds_to_addition1 = addition1 - (frame_count // frame_rate)
+    if seconds_to_addition1 < 0:
+        seconds_to_addition1 = 0
  
     # Divide by 60 to get total minutes
-    minutes = total_seconds // 60
+    minutes = seconds_to_addition1 // 60
  
     # Use modulus (remainder) to get seconds
-    seconds = total_seconds % 60
+    seconds = seconds_to_addition1 % 60
  
     # Use python string formatting to format in leading zeros
     output_string = "Time until " + hop1 + ": {0:02}:{1:02}".format(minutes, seconds)

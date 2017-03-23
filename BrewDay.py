@@ -41,7 +41,7 @@ frame_rate = 60
 
 def TimeUntilAddition(hop, hopTime, addition):
     font_color = BLACK
-    total_seconds = brewLength - addition - (frame_count // frame_rate)
+    total_seconds = brewLength - hopTime - (frame_count // frame_rate)
     if total_seconds < 0:
        total_seconds = 0
        font_color = RED
@@ -54,7 +54,7 @@ def TimeUntilAddition(hop, hopTime, addition):
     seconds = total_seconds % 60
  
    # Use python string formatting to format in leading zeros
-    output_string = "Time until " + hop1 + ": {0:02}:{1:02}".format(minutes, seconds)
+    output_string = "Time until " + hop + ": {0:02}:{1:02}".format(minutes, seconds)
  
     # Blit to the screen
     text = font.render(output_string, True, font_color)

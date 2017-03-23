@@ -40,7 +40,7 @@ frame_count = 0
 frame_rate = 60
 
 def TimeUntilAddition(hop, hopTime, addition):
-    font_color = black
+    font_color = BLACK
     total_seconds = brewLength - addition - (frame_count // frame_rate)
     if total_seconds < 0:
        total_seconds = 0
